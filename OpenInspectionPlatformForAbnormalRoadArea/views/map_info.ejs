@@ -1,0 +1,9 @@
+
+'<img id="api_img" width="450" height="450" style="background-color: black;" src="https://api.nasa.gov/planetary/earth/imagery?lon=' + point.lon + '&lat=' + point.lat + '&date=' + current_date + '&dim=0.15&api_key=etWAS7Oa3QmGtfKTvoi3fosLyYmQ79DE12QbNC0N" onError="Image_Error(this);"></img>'+
+'<p style="font-size: 22;">Name: ' + point.name + '</p>' +
+'<p style="font-size: 22; color:' + point.level + ';">Risk level: ' + Get_Level_Description(point.level) + '</p>' +
+'<p style="font-size: 22;">Earthquake: ' + point.earthquake + '</p>' +
+'<p style="font-size: 22;">Precipitation: ' + point.rainfall + '</p>' +
+'<p style="font-size: 22;">Mudslide: ' + point.rock_flow + '</p>' + 
+'<p style="font-size: 22;">Date: ' + current_date + '</p>' + 
+'<a style="font-size: 22;" href="#" onclick="show_3d();">3D Model</a> <a style="font-size: 22; right: 5%; position: absolute;" href="assets/pdf/data.pdf" target="_blank">Report</a>'
