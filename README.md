@@ -16,8 +16,49 @@
 * GPU with CC >= 3.0: https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 
 ### Train
-#### Step 1. Git clone Darknet github
+#### Step 1. Download  Darknet UAVRoadInspectionModule/darknet
+#### Step 2. Revise GPU, CUDNN, CUDNN_HALF, OPENCV in Makefile to 1
+    sed -i "s/GPU=0/GPU=1/g" darknet/Makefile
+    sed -i "s/CUDNN=0/CUDNN=1/g" darknet/Makefile
+    sed -i "s/CUDNN_HALF=0/CUDNN_HALF=1/g" darknet/Makefile
+    sed -i "s/OPENCV=0/OPENCV=1/g" darknet/Makefile
 
-'''
-  git clone https://github.com/AlexeyAB/darknet
-'''
+#### Step 3. Compile
+    cd darknet; 
+    make
+#### Step 4. Create a folder to put files
+* 4-1 Create a folder named Road_detection
+
+      cd ..; mkdir Road_detection
+      cd Road_detection
+* 4-2 Create two folders for cfg and weights, and copy road.data, road.names in cfg
+      
+      import os
+      import shutil
+      
+      if not os.path.exists(“Road_detection”):
+        os.mkdir(“Road_detection”)
+      if not os.path.exists(“Road_detection/cfg”):
+        os.mkdir(“Road_detection/cfg”) 
+        os.mkdir(“Road_detection/weights”)
+      if not os.path.exists(“Road_detection/cfg/road.data”):
+        shutil.copyfile(“darknet/cfg/coco.data”, “Road_detection/cfg/road.data”)
+      if not os.path.exists(“Road_detection/cfg/road.names”):
+        shutil.copyfile(“darknet/cfg/coco.names”, “Road_detection/cfg/road.names”)
+#### Step 5. Prepare a training data set
+
+File path:
+
+* darknet
+* Road_detection
+- cfg
+* road.data
+* road.names
+*	train.txt	//the path of training data
+*	valid.txt	//the path of valida data
+-	weights
+-	road_train	//contain images and label datas
+-	road_valid	//contain images and label datas
+
+
+
