@@ -4,7 +4,7 @@
 
 [Project Demo Link](https://thebestyea.net/)
 
-# HiddenAbnormalRoadInspectionModule/
+# HiddenAbnormalRoadInspectionModule
 
 
 ## Prerequisites
